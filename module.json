@@ -1,0 +1,24 @@
+{
+  "id": "critical-splash-screen",
+  "title": "Critical Splash Screens",
+  "description": "Displays a per-character static screen overlay (with optional sound) on natural 20 crits (or a lowered crit threshold, auto-detected or manually overridden) and natural 1 fumbles (attacks, death saves, ability checks, skill checks) for dnd5e, via Sequencer, and plays a random death sound when a token dies. Universal crit/fumble sound folders act as fallbacks for characters with no custom sound; image and sound play independently, so a sound still plays even with no custom image set. GM-client-only to avoid duplicate/overlapping sounds across connected players. Configurable through Module Settings.",
+  "version": "2.8.0",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "14"
+  },
+  "relationships": {
+    "requires": [
+      {
+        "id": "sequencer",
+        "type": "module",
+        "compatibility": {}
+      }
+    ]
+  },
+  "scripts": ["scripts/critical-splash-screen.js"],
+  "authors": [{ "name": "Zane", "email": "qqztkyz3k@mozmail.com" }],
+  "url": "https://github.com/Thriceisalways/critical-splash-screen",
+  "manifest": "https://github.com/Thriceisalways/critical-splash-screen/releases/latest/download/module.json",
+  "download": "https://github.com/Thriceisalways/critical-splash-screen/releases/latest/download/module.zip"
+}

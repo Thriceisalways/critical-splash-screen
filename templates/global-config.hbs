@@ -1,0 +1,59 @@
+<div class="css-global-config">
+  <style>
+    .css-global-config {
+      overflow-y: auto;
+      height: 100%;
+      box-sizing: border-box;
+      padding-right: 8px;
+    }
+    .css-global-config .form-group {
+      margin-bottom: 10px;
+    }
+  </style>
+
+  <p>Screen scale, default crit/fumble images, and the death/crit/fumble sound folders.</p>
+
+  <div class="form-group">
+    <label>Screen Scale (fraction of screen size, e.g. 0.3 = 30%)</label>
+    <input type="number" name="scale" value="{{scale}}" step="0.05" min="0.05" max="3">
+  </div>
+  <div class="form-group">
+    <label>Default Crit Image (used if a character isn't set up)</label>
+    <div class="form-fields">
+      <input type="text" name="defaultCrit" value="{{defaultCrit}}">
+      <button type="button" data-action="pickImage" data-target="defaultCrit"><i class="fas fa-file-import"></i></button>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Default Fumble Image (used if a character isn't set up)</label>
+    <div class="form-fields">
+      <input type="text" name="defaultFumble" value="{{defaultFumble}}">
+      <button type="button" data-action="pickImage" data-target="defaultFumble"><i class="fas fa-file-import"></i></button>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Death Sound Folder (a random file plays when a token gets the "dead" status)</label>
+    <div class="form-fields">
+      <input type="text" name="deathSoundFolder" value="{{deathSoundFolder}}">
+      <button type="button" data-action="pickImage" data-target="deathSoundFolder" data-picker-type="folder"><i class="fas fa-folder-open"></i></button>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Crit Sound Folder (backup: random file plays on a crit if that character has no custom crit sound set)</label>
+    <div class="form-fields">
+      <input type="text" name="critSoundFolder" value="{{critSoundFolder}}">
+      <button type="button" data-action="pickImage" data-target="critSoundFolder" data-picker-type="folder"><i class="fas fa-folder-open"></i></button>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Fumble Sound Folder (backup: random file plays on a fumble if that character has no custom fumble sound set)</label>
+    <div class="form-fields">
+      <input type="text" name="fumbleSoundFolder" value="{{fumbleSoundFolder}}">
+      <button type="button" data-action="pickImage" data-target="fumbleSoundFolder" data-picker-type="folder"><i class="fas fa-folder-open"></i></button>
+    </div>
+  </div>
+
+  <footer class="sheet-footer">
+    <button type="submit"><i class="fas fa-save"></i> Save</button>
+  </footer>
+</div>

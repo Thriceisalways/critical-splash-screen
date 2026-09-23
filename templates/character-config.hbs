@@ -1,0 +1,154 @@
+<div class="css-character-config">
+  <style>
+    .css-character-config {
+      overflow-y: auto;
+      height: 100%;
+      box-sizing: border-box;
+      padding-right: 8px;
+    }
+    .css-character-config .hint {
+      opacity: 0.75;
+      font-size: 0.9em;
+      margin-top: -4px;
+    }
+    .css-character-config .char-card {
+      border: 1px solid var(--color-border-light-tertiary, #7a7971);
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      background: rgba(0, 0, 0, 0.12);
+    }
+    .css-character-config .char-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--color-border-light-tertiary, #7a7971);
+    }
+    .css-character-config .actor-id-field {
+      flex: 1 1 auto;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .css-character-config .actor-id-field input {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+    .css-character-config .actor-name-display {
+      flex: 0 0 auto;
+      font-style: italic;
+      opacity: 0.85;
+      white-space: nowrap;
+      max-width: 160px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .css-character-config .char-card-header .threshold-field {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+    .css-character-config .char-card-header .threshold-field input {
+      width: 50px;
+      text-align: center;
+    }
+    .css-character-config .char-card-header button[data-action="deleteRow"] {
+      flex: 0 0 auto;
+    }
+    .css-character-config .char-card-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 16px;
+    }
+    .css-character-config .char-card-col h4 {
+      margin: 0 0 6px 0;
+      font-size: 0.95em;
+      opacity: 0.85;
+    }
+    .css-character-config .char-card-col .form-group {
+      margin-bottom: 8px;
+    }
+    .css-character-config .char-card-col label {
+      font-size: 0.85em;
+      opacity: 0.75;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .css-character-config .form-fields input[type="text"] {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+  </style>
+
+  <p class="hint">
+    Drag an actor from the sidebar onto the actor field below, or paste an Actor UUID/id directly.
+    Crit threshold is optional — leave blank for a normal nat 20 (or the character's own
+    "weaponCriticalThreshold" flag, e.g. from Improved Critical, if lower).
+    Sounds only play if a splash image is also set for that crit or fumble.
+  </p>
+
+  {{#each rows}}
+  <div class="char-card">
+    <div class="char-card-header">
+      <div class="actor-id-field">
+        <input type="text" data-actor-drop name="rows.{{@index}}.actorId" value="{{actorId}}"
+               placeholder="Drag actor here or paste UUID/id">
+        <span class="actor-name-display">{{actorName}}</span>
+      </div>
+      <div class="threshold-field">
+        <label for="crit-threshold-{{@index}}" title="Crit on this value or higher">Crit on</label>
+        <input type="number" id="crit-threshold-{{@index}}" name="rows.{{@index}}.critThreshold"
+               value="{{critThreshold}}" min="2" max="20" placeholder="20">
+      </div>
+      <button type="button" data-action="deleteRow" data-index="{{@index}}" title="Remove"><i class="fas fa-trash"></i></button>
+    </div>
+    <div class="char-card-body">
+      <div class="char-card-col">
+        <h4>Crit</h4>
+        <div class="form-group">
+          <label>Image</label>
+          <div class="form-fields">
+            <input type="text" name="rows.{{@index}}.critFile" value="{{critFile}}">
+            <button type="button" data-action="pickImage" data-target="rows.{{@index}}.critFile"><i class="fas fa-file-import"></i></button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Sound</label>
+          <div class="form-fields">
+            <input type="text" name="rows.{{@index}}.critSound" value="{{critSound}}">
+            <button type="button" data-action="pickImage" data-target="rows.{{@index}}.critSound" data-picker-type="audio"><i class="fas fa-music"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="char-card-col">
+        <h4>Fumble</h4>
+        <div class="form-group">
+          <label>Image</label>
+          <div class="form-fields">
+            <input type="text" name="rows.{{@index}}.fumbleFile" value="{{fumbleFile}}">
+            <button type="button" data-action="pickImage" data-target="rows.{{@index}}.fumbleFile"><i class="fas fa-file-import"></i></button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Sound</label>
+          <div class="form-fields">
+            <input type="text" name="rows.{{@index}}.fumbleSound" value="{{fumbleSound}}">
+            <button type="button" data-action="pickImage" data-target="rows.{{@index}}.fumbleSound" data-picker-type="audio"><i class="fas fa-music"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+
+  <button type="button" data-action="addRow"><i class="fas fa-plus"></i> Add Character</button>
+
+  <footer class="sheet-footer">
+    <button type="submit"><i class="fas fa-save"></i> Save</button>
+  </footer>
+</div>
